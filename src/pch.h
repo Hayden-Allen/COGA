@@ -1,0 +1,38 @@
+#pragma once
+// basic
+#include <cmath>
+#include <stdio.h>
+#include <vector>
+#include <map>
+#include <set>
+#include <unordered_map>
+#include <unordered_set>
+#include <numeric>
+#include <algorithm>
+#include <thread>
+#include <fstream>
+#include <sstream>
+#include <memory>
+#include <string>
+#include <functional>
+#include <regex>
+// platform
+#ifdef COGA_BUILD_LIB
+	#ifdef COGA_PLATFORM_WINDOWS
+		#include <Windows.h>
+		#include <glad/glad.h>
+		#include <GLFW/glfw3.h>
+		#define GLFW_EXPOSE_NATIVE_WIN32
+		#include <GLFW/glfw3native.h>
+		#include <imgui.h>
+		#include <backends/imgui_impl_glfw.h>
+		#include <backends/imgui_impl_opengl3.h>
+		#include <imgui_internal.h>
+	#endif
+#endif
+// vendor
+#include <spdlog/spdlog.h>
+#include <spdlog/sinks/stdout_color_sinks.h>
+// engine
+#include "COGA/core.h"
+#include "COGA/log.h"

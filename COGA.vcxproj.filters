@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="coga">
+      <UniqueIdentifier>{DF3E957C-CB75-960D-7462-7C106078120F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="coga\event">
+      <UniqueIdentifier>{903B0FF6-7CF3-5043-E5FA-299FD1D1EB33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="coga\graphics">
+      <UniqueIdentifier>{1FCEBD2B-8B8E-3962-54C9-82DFC0487E3E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="coga\imgui">
+      <UniqueIdentifier>{89B752F6-756F-9443-DE76-6D9FCA4D2F34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="coga\io">
+      <UniqueIdentifier>{669CEFD2-D27B-6E6E-DB93-F94447F2D4CF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="coga\layer">
+      <UniqueIdentifier>{0BB782F6-F76E-C443-6076-9D9F4C4D5F34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="coga\util">
+      <UniqueIdentifier>{AC054F4D-1870-03C4-61AE-B469CD57E118}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="platform">
+      <UniqueIdentifier>{4A63C33C-3630-1E48-5F49-0CF04B7553D6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="platform\graphics">
+      <UniqueIdentifier>{EA1A7F2C-5631-7DC2-9FA8-08E40BFE4D4A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="platform\graphics\gl">
+      <UniqueIdentifier>{4C00E25E-388F-6B28-E1AD-7F23CD1B7CCE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="platform\os">
+      <UniqueIdentifier>{BBED55E0-27A3-CED5-B097-C8AC1C4CC5D9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="platform\os\windows">
+      <UniqueIdentifier>{15BB2ED6-811C-0CE4-0A8A-529676EA42A3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\coga.h" />
+    <ClInclude Include="src\coga\application.h">
+      <Filter>coga</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\core.h">
+      <Filter>coga</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\entry_point.h">
+      <Filter>coga</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\event\app_event.h">
+      <Filter>coga\event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\event\event.h">
+      <Filter>coga\event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\event\event_handler.h">
+      <Filter>coga\event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\event\event_handler_container.h">
+      <Filter>coga\event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\event\event_propagator.h">
+      <Filter>coga\event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\event\key_event.h">
+      <Filter>coga\event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\event\mouse_event.h">
+      <Filter>coga\event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\event\window_event.h">
+      <Filter>coga\event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\graphics\buffer.h">
+      <Filter>coga\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\graphics\camera.h">
+      <Filter>coga\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\graphics\context.h">
+      <Filter>coga\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\graphics\framebuffer.h">
+      <Filter>coga\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\graphics\framebuffer_attachment.h">
+      <Filter>coga\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\graphics\render_object.h">
+      <Filter>coga\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\graphics\renderer.h">
+      <Filter>coga\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\graphics\retained_buffer.h">
+      <Filter>coga\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\graphics\retained_texture.h">
+      <Filter>coga\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\graphics\shader.h">
+      <Filter>coga\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\graphics\shader_preprocessor.h">
+      <Filter>coga\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\graphics\shader_program.h">
+      <Filter>coga\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\graphics\shader_type.h">
+      <Filter>coga\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\graphics\texture.h">
+      <Filter>coga\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\graphics\texture_options.h">
+      <Filter>coga\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\graphics\vertex_array.h">
+      <Filter>coga\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\graphics\vertex_array_description.h">
+      <Filter>coga\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\graphics\vertex_buffer_element.h">
+      <Filter>coga\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\imgui\dockspace.h">
+      <Filter>coga\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\imgui\layer.h">
+      <Filter>coga\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\imgui\window.h">
+      <Filter>coga\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\io\file.h">
+      <Filter>coga\io</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\io\input.h">
+      <Filter>coga\io</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\io\input_key.h">
+      <Filter>coga\io</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\io\input_mouse.h">
+      <Filter>coga\io</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\io\serializable.h">
+      <Filter>coga\io</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\layer\layer.h">
+      <Filter>coga\layer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\layer\layer_stack.h">
+      <Filter>coga\layer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\log.h">
+      <Filter>coga</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\timestep.h">
+      <Filter>coga</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\util\bank.h">
+      <Filter>coga\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\util\color.h">
+      <Filter>coga\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\util\dimensional.h">
+      <Filter>coga\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\util\functions.h">
+      <Filter>coga\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\util\indexed_list.h">
+      <Filter>coga\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\util\iterable.h">
+      <Filter>coga\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\util\movable.h">
+      <Filter>coga\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\util\point.h">
+      <Filter>coga\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\util\positional.h">
+      <Filter>coga\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\util\range.h">
+      <Filter>coga\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\util\rect.h">
+      <Filter>coga\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\util\rect_packer.h">
+      <Filter>coga\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\util\stateful.h">
+      <Filter>coga\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\util\typed.h">
+      <Filter>coga\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coga\window.h">
+      <Filter>coga</Filter>
+    </ClInclude>
+    <ClInclude Include="src\pch.h" />
+    <ClInclude Include="src\platform\graphics\gl\buffer.h">
+      <Filter>platform\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\graphics\gl\camera.h">
+      <Filter>platform\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\graphics\gl\context.h">
+      <Filter>platform\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\graphics\gl\framebuffer.h">
+      <Filter>platform\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\graphics\gl\framebuffer_attachment.h">
+      <Filter>platform\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\graphics\gl\index_buffer.h">
+      <Filter>platform\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\graphics\gl\retained_buffer.h">
+      <Filter>platform\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\graphics\gl\retained_index_buffer.h">
+      <Filter>platform\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\graphics\gl\retained_texture.h">
+      <Filter>platform\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\graphics\gl\retained_vertex_buffer.h">
+      <Filter>platform\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\graphics\gl\shader.h">
+      <Filter>platform\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\graphics\gl\shader_program.h">
+      <Filter>platform\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\graphics\gl\shader_type.h">
+      <Filter>platform\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\graphics\gl\texture.h">
+      <Filter>platform\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\graphics\gl\texture_options.h">
+      <Filter>platform\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\graphics\gl\vertex_array.h">
+      <Filter>platform\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\graphics\gl\vertex_buffer.h">
+      <Filter>platform\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\os\windows\windows_input.h">
+      <Filter>platform\os\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\os\windows\windows_layer.h">
+      <Filter>platform\os\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\os\windows\windows_window.h">
+      <Filter>platform\os\windows</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\coga\application.cpp">
+      <Filter>coga</Filter>
+    </ClCompile>
+    <ClCompile Include="src\coga\imgui\build.cpp">
+      <Filter>coga\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\coga\imgui\layer.cpp">
+      <Filter>coga\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\coga\io\file.cpp">
+      <Filter>coga\io</Filter>
+    </ClCompile>
+    <ClCompile Include="src\coga\layer\layer_stack.cpp">
+      <Filter>coga\layer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\coga\log.cpp">
+      <Filter>coga</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pch.cpp" />
+    <ClCompile Include="src\platform\graphics\gl\camera.cpp">
+      <Filter>platform\graphics\gl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform\graphics\gl\context.cpp">
+      <Filter>platform\graphics\gl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform\graphics\gl\framebuffer.cpp">
+      <Filter>platform\graphics\gl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform\graphics\gl\framebuffer_attachment.cpp">
+      <Filter>platform\graphics\gl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform\graphics\gl\renderer.cpp">
+      <Filter>platform\graphics\gl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform\graphics\gl\retained_texture.cpp">
+      <Filter>platform\graphics\gl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform\graphics\gl\shader.cpp">
+      <Filter>platform\graphics\gl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform\graphics\gl\shader_program.cpp">
+      <Filter>platform\graphics\gl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform\graphics\gl\texture.cpp">
+      <Filter>platform\graphics\gl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform\os\windows\windows_input.cpp">
+      <Filter>platform\os\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform\os\windows\windows_layer.cpp">
+      <Filter>platform\os\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform\os\windows\windows_window.cpp">
+      <Filter>platform\os\windows</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

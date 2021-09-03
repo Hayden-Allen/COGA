@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Dist|x64">
+      <Configuration>Dist</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{5F26837C-4B5D-840D-F449-6A10E05F000F}</ProjectGuid>
+    <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>COGA</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>bin\Debug-x86_64-windows\</OutDir>
+    <IntDir>bin-int\Debug-x86_64-windows\</IntDir>
+    <TargetName>COGA</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>bin\Release-x86_64-windows\</OutDir>
+    <IntDir>bin-int\Release-x86_64-windows\</IntDir>
+    <TargetName>COGA</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
+    <OutDir>bin\Dist-x86_64-windows\</OutDir>
+    <IntDir>bin-int\Dist-x86_64-windows\</IntDir>
+    <TargetName>COGA</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>COGA_PLATFORM_WINDOWS;COGA_RENDER_API_GL;COGA_RAN=coga::gl;COGA_BUILD_LIB;_CRT_SECURE_NO_WARNINGS;COGA_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;src\coga;vendor\spdlog\include;vendor\GLFW\include;vendor\glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>COGA_PLATFORM_WINDOWS;COGA_RENDER_API_GL;COGA_RAN=coga::gl;COGA_BUILD_LIB;_CRT_SECURE_NO_WARNINGS;COGA_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;src\coga;vendor\spdlog\include;vendor\GLFW\include;vendor\glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>COGA_PLATFORM_WINDOWS;COGA_RENDER_API_GL;COGA_RAN=coga::gl;COGA_BUILD_LIB;_CRT_SECURE_NO_WARNINGS;COGA_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;src\coga;vendor\spdlog\include;vendor\GLFW\include;vendor\glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="src\coga.h" />
+    <ClInclude Include="src\coga\application.h" />
+    <ClInclude Include="src\coga\core.h" />
+    <ClInclude Include="src\coga\entry_point.h" />
+    <ClInclude Include="src\coga\event\app_event.h" />
+    <ClInclude Include="src\coga\event\event.h" />
+    <ClInclude Include="src\coga\event\event_handler.h" />
+    <ClInclude Include="src\coga\event\event_handler_container.h" />
+    <ClInclude Include="src\coga\event\event_propagator.h" />
+    <ClInclude Include="src\coga\event\key_event.h" />
+    <ClInclude Include="src\coga\event\mouse_event.h" />
+    <ClInclude Include="src\coga\event\window_event.h" />
+    <ClInclude Include="src\coga\graphics\buffer.h" />
+    <ClInclude Include="src\coga\graphics\camera.h" />
+    <ClInclude Include="src\coga\graphics\context.h" />
+    <ClInclude Include="src\coga\graphics\framebuffer.h" />
+    <ClInclude Include="src\coga\graphics\framebuffer_attachment.h" />
+    <ClInclude Include="src\coga\graphics\render_object.h" />
+    <ClInclude Include="src\coga\graphics\renderer.h" />
+    <ClInclude Include="src\coga\graphics\retained_buffer.h" />
+    <ClInclude Include="src\coga\graphics\retained_texture.h" />
+    <ClInclude Include="src\coga\graphics\shader.h" />
+    <ClInclude Include="src\coga\graphics\shader_preprocessor.h" />
+    <ClInclude Include="src\coga\graphics\shader_program.h" />
+    <ClInclude Include="src\coga\graphics\shader_type.h" />
+    <ClInclude Include="src\coga\graphics\texture.h" />
+    <ClInclude Include="src\coga\graphics\texture_options.h" />
+    <ClInclude Include="src\coga\graphics\vertex_array.h" />
+    <ClInclude Include="src\coga\graphics\vertex_array_description.h" />
+    <ClInclude Include="src\coga\graphics\vertex_buffer_element.h" />
+    <ClInclude Include="src\coga\imgui\dockspace.h" />
+    <ClInclude Include="src\coga\imgui\layer.h" />
+    <ClInclude Include="src\coga\imgui\window.h" />
+    <ClInclude Include="src\coga\io\file.h" />
+    <ClInclude Include="src\coga\io\input.h" />
+    <ClInclude Include="src\coga\io\input_key.h" />
+    <ClInclude Include="src\coga\io\input_mouse.h" />
+    <ClInclude Include="src\coga\io\serializable.h" />
+    <ClInclude Include="src\coga\layer\layer.h" />
+    <ClInclude Include="src\coga\layer\layer_stack.h" />
+    <ClInclude Include="src\coga\log.h" />
+    <ClInclude Include="src\coga\timestep.h" />
+    <ClInclude Include="src\coga\util\bank.h" />
+    <ClInclude Include="src\coga\util\color.h" />
+    <ClInclude Include="src\coga\util\dimensional.h" />
+    <ClInclude Include="src\coga\util\functions.h" />
+    <ClInclude Include="src\coga\util\indexed_list.h" />
+    <ClInclude Include="src\coga\util\iterable.h" />
+    <ClInclude Include="src\coga\util\movable.h" />
+    <ClInclude Include="src\coga\util\point.h" />
+    <ClInclude Include="src\coga\util\positional.h" />
+    <ClInclude Include="src\coga\util\range.h" />
+    <ClInclude Include="src\coga\util\rect.h" />
+    <ClInclude Include="src\coga\util\rect_packer.h" />
+    <ClInclude Include="src\coga\util\stateful.h" />
+    <ClInclude Include="src\coga\util\typed.h" />
+    <ClInclude Include="src\coga\window.h" />
+    <ClInclude Include="src\pch.h" />
+    <ClInclude Include="src\platform\graphics\gl\buffer.h" />
+    <ClInclude Include="src\platform\graphics\gl\camera.h" />
+    <ClInclude Include="src\platform\graphics\gl\context.h" />
+    <ClInclude Include="src\platform\graphics\gl\framebuffer.h" />
+    <ClInclude Include="src\platform\graphics\gl\framebuffer_attachment.h" />
+    <ClInclude Include="src\platform\graphics\gl\index_buffer.h" />
+    <ClInclude Include="src\platform\graphics\gl\retained_buffer.h" />
+    <ClInclude Include="src\platform\graphics\gl\retained_index_buffer.h" />
+    <ClInclude Include="src\platform\graphics\gl\retained_texture.h" />
+    <ClInclude Include="src\platform\graphics\gl\retained_vertex_buffer.h" />
+    <ClInclude Include="src\platform\graphics\gl\shader.h" />
+    <ClInclude Include="src\platform\graphics\gl\shader_program.h" />
+    <ClInclude Include="src\platform\graphics\gl\shader_type.h" />
+    <ClInclude Include="src\platform\graphics\gl\texture.h" />
+    <ClInclude Include="src\platform\graphics\gl\texture_options.h" />
+    <ClInclude Include="src\platform\graphics\gl\vertex_array.h" />
+    <ClInclude Include="src\platform\graphics\gl\vertex_buffer.h" />
+    <ClInclude Include="src\platform\os\windows\windows_input.h" />
+    <ClInclude Include="src\platform\os\windows\windows_layer.h" />
+    <ClInclude Include="src\platform\os\windows\windows_window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\coga\application.cpp" />
+    <ClCompile Include="src\coga\imgui\build.cpp" />
+    <ClCompile Include="src\coga\imgui\layer.cpp" />
+    <ClCompile Include="src\coga\io\file.cpp" />
+    <ClCompile Include="src\coga\layer\layer_stack.cpp" />
+    <ClCompile Include="src\coga\log.cpp" />
+    <ClCompile Include="src\pch.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="src\platform\graphics\gl\camera.cpp" />
+    <ClCompile Include="src\platform\graphics\gl\context.cpp" />
+    <ClCompile Include="src\platform\graphics\gl\framebuffer.cpp" />
+    <ClCompile Include="src\platform\graphics\gl\framebuffer_attachment.cpp" />
+    <ClCompile Include="src\platform\graphics\gl\renderer.cpp" />
+    <ClCompile Include="src\platform\graphics\gl\retained_texture.cpp" />
+    <ClCompile Include="src\platform\graphics\gl\shader.cpp" />
+    <ClCompile Include="src\platform\graphics\gl\shader_program.cpp" />
+    <ClCompile Include="src\platform\graphics\gl\texture.cpp" />
+    <ClCompile Include="src\platform\os\windows\windows_input.cpp" />
+    <ClCompile Include="src\platform\os\windows\windows_layer.cpp" />
+    <ClCompile Include="src\platform\os\windows\windows_window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">
+      <Project>{154B857C-0182-860D-AA6E-6C109684020F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="vendor\glad\glad.vcxproj">
+      <Project>{DD62977C-C999-980D-7286-7E105E9C140F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="vendor\imgui\imgui.vcxproj">
+      <Project>{0098A80F-6CAC-D0C0-352E-7420A101CDF1}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
