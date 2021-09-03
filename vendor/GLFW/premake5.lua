@@ -2,6 +2,7 @@ project "GLFW"
 	kind "StaticLib"
 	language "C"
 	staticruntime "on"
+	flags "MultiProcessorCompile"
 
 	targetdir("bin/" .. outputdir .. "%{prj.name}")
 	objdir("bin-int/" .. outputdir .. "%{prj.name}")

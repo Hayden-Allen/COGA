@@ -3,6 +3,7 @@ project "imgui"
     language "C++"
     cppdialect "C++latest"
     staticruntime "on"
+	flags "MultiProcessorCompile"
     
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
