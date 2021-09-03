@@ -1,0 +1,2 @@
+# COGA
+ COmmon Games API
