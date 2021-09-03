@@ -1,3 +1,4 @@
+--[[
 workspace "COGA"
 	architecture "x64"
 
@@ -7,7 +8,8 @@ workspace "COGA"
 		"Release",
 		"Dist"
 	}
-	
+]]--
+
 outputdir = "%{cfg.buildcfg}-%{cfg.architecture}-%{cfg.system}"
 
 include "vendor/GLFW"
