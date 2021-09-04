@@ -55,8 +55,8 @@ namespace coga
 
 
 
-#define MAGE_BANK_DTOR(B) \
-	B::~B() { for(size_t i = 0; i < m_next; i++) delete m_bank[i]; }
+#define COGA_BANK_DTOR(B) \
+	B::~B() { for(size_t i = 0; i < this->m_next; i++) delete this->m_bank[i]; }
 	/**
 	 * T must also implement the serializable interface
 	 */

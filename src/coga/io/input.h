@@ -27,7 +27,7 @@ namespace coga
 		bool is_mouse_pressed(int button) const { return mouse_pressed(button); }
 		float get_mouse_x() const { return mouse_x(); }
 		float get_mouse_y() const { return mouse_y(); }
-		glm::vec2 get_mouse() const { return { mouse_x(), mouse_y() }; }
+		glm::vec2 get_mouse_pos() const { return { mouse_x(), mouse_y() }; }
 		static const input& get() { return *s_instance; }
 	protected:
 		input()
