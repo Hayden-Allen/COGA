@@ -46,7 +46,7 @@ namespace coga::imgui
 		struct menu
 		{
 			std::string name;
-			std::vector<menu_entry> entries;
+			std::vector<std::vector<menu_entry>> entries;
 		};
 		struct window_options
 		{
@@ -76,10 +76,6 @@ namespace coga::imgui
 			const ImVec2& min = ImGui::GetWindowPos();
 			return { min.x + view.x, min.y + view.y };
 		}
-		/*ImVec2 get_display_pos() const
-		{
-			const auto& io = ImGui::GetIO();
-		}*/
 		glm::vec2 get_size() const
 		{
 			const ImVec2& s = ImGui::GetWindowSize();
@@ -104,15 +100,22 @@ namespace coga::imgui
 			{
 				for (const menu& menu : m_menus)
 				{
+					// menu is open
 					if (ImGui::BeginMenu(menu.name.c_str()))
 					{
-						for (const menu_entry& entry : menu.entries)
-							if (ImGui::MenuItem(entry.name.c_str(), entry.shortcut.c_str()))
-								(this->*entry.fn)();
+						for (const std::vector<menu_entry>& group : menu.entries)
+						{
+							for (const menu_entry& entry : group)
+								if (ImGui::MenuItem(entry.name.c_str(), entry.shortcut.c_str()))
+									(this->*entry.fn)();
+							ImGui::Separator();
+						}
 						ImGui::EndMenu();
 					}
-					else
-						for (const menu_entry& entry : menu.entries)
+
+					// menu is closed, but shortcuts should still work
+					for (const std::vector<menu_entry>& group : menu.entries)
+						for (const menu_entry& entry : group)
 							if (COGA_IN.are_keys_pressed(entry.codes))
 								(this->*entry.fn)();
 				}
