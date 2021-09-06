@@ -1,15 +1,6 @@
 #include "pch.h"
 #include "camera.h"
 
-namespace coga::gfx
-{
-	orthographic_camera* orthographic_camera::create(event_handler_container& c, float width, float height, const glm::vec3& pos, s_type rotation, float zoom)
-	{
-		return new coga::gl::orthographic_camera(c, width, height, pos, rotation, zoom);
-	}
-}
-
-
 namespace coga::gl
 {
 	void orthographic_camera::set_pos(const glm::vec3& pos)

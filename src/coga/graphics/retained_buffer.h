@@ -91,8 +91,6 @@ namespace coga::gfx
 		{
 			out.ulong(m_count);
 			out.write(m_data, m_count);
-			COGA_INFO("SAVE BUFFER {}", m_count);
-			arrprint(m_count, m_data, "%f", ", ", 5);
 		}
 		virtual void load(input_file& in) override
 		{

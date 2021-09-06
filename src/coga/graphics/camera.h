@@ -77,32 +77,44 @@ namespace coga::gfx
 		COGA_DCM(orthographic_camera);
 		virtual ~orthographic_camera() {}
 	public:
-		static orthographic_camera* create(event_handler_container& c, float width, float height, const glm::vec3& pos, s_type rotation, float zoom);
 		float get_zoom() const
 		{
 			return m_zoom;
 		}
 		void set_zoom(float zoom)
 		{
-			m_zoom = zoom;
-			m_projection = compute_projection(m_w, m_h);
+			if (m_zoom != zoom)
+			{
+				m_zoom = zoom;
+				m_projection = compute_projection(m_w, m_h);
+				update();
+			}
 		}
 		void set_size(float w, float h)
 		{
-			m_projection = compute_projection(m_w = w, m_h = h);
+			if (m_w != w || m_h != h)
+			{
+				m_projection = compute_projection(m_w = w, m_h = h);
+				update();
+			}
 		}
 	protected:
 		float m_zoom;
 	protected:
 		orthographic_camera(event_handler_container& c, float width, float height, const glm::vec3& pos, s_type rotation, float zoom) :
-			camera<float>(c, compute_projection(width, height), glm::mat4(1.f), pos, rotation),
+			camera<float>(c, compute_initial_projection(width, height, zoom), glm::mat4(1.f), pos, rotation),
 			dimensional<float>(width, height),
 			m_zoom(zoom)
 		{}
 	protected:
 		glm::mat4 compute_projection(float width, float height)
 		{
-			const float z = 1.f / m_zoom;
+			return compute_initial_projection(width, height, m_zoom);
+		}
+	private:
+		glm::mat4 compute_initial_projection(float width, float height, float zoom)
+		{
+			const float z = 1.f / zoom;
 			return glm::ortho(-z, z, -height / width * z, height / width * z);
 		}
 	};

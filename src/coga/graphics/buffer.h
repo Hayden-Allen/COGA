@@ -31,8 +31,6 @@ namespace coga::gfx
 			m_count = in.ulong();
 			T* data = new T[m_count];
 			in.read(data, m_count);
-			COGA_INFO("LOAD BUFFER {}", m_count);
-			arrprint(m_count, data, "%f", ", ", 5);
 			write(data, m_count);
 			delete[] data;
 		}
