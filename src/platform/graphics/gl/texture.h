@@ -33,7 +33,6 @@ namespace coga::gl
 		texture(const texture_options& options, T::s_type w, T::s_type h, const ARGS& ... args) :
 			T(w, h, args...),
 			m_options(options)
-
 		{
 			glGenTextures(1, &this->m_id);
 			bind(0);

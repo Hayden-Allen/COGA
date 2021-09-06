@@ -9,26 +9,16 @@ namespace coga::gl
 	{
 	public:
 		COGA_DM(retained_vertex_buffer);
-		virtual ~retained_vertex_buffer()
-		{
-			COGA_CORE_TRACE("Delete RVB {}", this->m_id);
-		}
 	protected:
 		retained_vertex_buffer(coga::gfx::retained_vertex_buffer::s_type* data, size_t count) :
 			coga::gl::retained_buffer<GL_ARRAY_BUFFER, USAGE, coga::gfx::retained_vertex_buffer>(data, count)
-		{
-			COGA_CORE_TRACE("Create RVB {}", this->m_id);
-		}
+		{}
 		retained_vertex_buffer(const retained_vertex_buffer& other, size_t count) :
 			coga::gl::retained_buffer<GL_ARRAY_BUFFER, USAGE, coga::gfx::retained_vertex_buffer>(other, count)
-		{
-			COGA_CORE_TRACE("Create RVB {}", this->m_id);
-		}
+		{}
 		retained_vertex_buffer(input_file& in) :
 			coga::gl::retained_buffer<GL_ARRAY_BUFFER, USAGE, coga::gfx::retained_vertex_buffer>(in)
-		{
-			COGA_CORE_TRACE("Create RVB {}", this->m_id);
-		}
+		{}
 	};
 
 

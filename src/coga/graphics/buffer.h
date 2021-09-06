@@ -1,6 +1,8 @@
 #pragma once
 #include "pch.h"
 #include "render_object.h"
+#include "coga/io/serializable.h"
+#include "coga/util/functions.h"
 #include "coga/util/typed.h"
 
 namespace coga::gfx
@@ -8,7 +10,8 @@ namespace coga::gfx
 	template<typename T>
 	class buffer :
 		public render_object,
-		public typed<T>
+		public typed<T>,
+		public serializable
 	{
 	public:
 		COGA_DCM(buffer);
@@ -18,6 +21,20 @@ namespace coga::gfx
 		U get_count() const
 		{
 			return COGA_CAST(U, m_count);
+		}
+		virtual void save(output_file& out) const override
+		{
+			COGA_CORE_ASSERT(false, "Cannot save a coga::gfx::buffer");
+		}
+		virtual void load(input_file& in) override
+		{
+			m_count = in.ulong();
+			T* data = new T[m_count];
+			in.read(data, m_count);
+			COGA_INFO("LOAD BUFFER {}", m_count);
+			arrprint(m_count, data, "%f", ", ", 5);
+			write(data, m_count);
+			delete[] data;
 		}
 	protected:
 		size_t m_count;

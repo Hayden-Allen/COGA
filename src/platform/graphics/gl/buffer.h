@@ -30,11 +30,25 @@ namespace coga::gl
 			glBufferSubData(TARGET, offset, count * sizeof(T::s_type), data);
 			unbind();
 		}
+		void save(output_file& out) const override
+		{
+			T::save(out);
+		}
+		void load(input_file& in) override
+		{
+			T::load(in);
+		}
 	protected:
 		buffer(size_t count) :
 			T(count)
 		{
 			glGenBuffers(1, &this->m_id);
+		}
+		buffer(coga::input_file& in) :
+			T(0)
+		{
+			glGenBuffers(1, &this->m_id);
+			load(in);
 		}
 	protected:
 		void write(const s_type* const data, size_t count) const override

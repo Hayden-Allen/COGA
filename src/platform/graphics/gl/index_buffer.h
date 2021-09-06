@@ -27,6 +27,9 @@ namespace coga::gl
 			coga::gl::buffer<GL_ELEMENT_ARRAY_BUFFER, USAGE, coga::gfx::index_buffer>::write(indices, count);
 			COGA_CORE_TRACE("Create IB {}", this->m_id);
 		}
+		index_buffer(coga::input_file& in) :
+			coga::gl::buffer<GL_ELEMENT_ARRAY_BUFFER, USAGE, coga::gfx::index_buffer>(in)
+		{}
 	};
 
 
@@ -39,6 +42,9 @@ namespace coga::gl
 		{}
 		static_index_buffer(s_type* indices, size_t count) :
 			index_buffer<GL_STATIC_DRAW>(indices, count)
+		{}
+		static_index_buffer(coga::input_file & in) :
+			index_buffer<GL_STATIC_DRAW>(in)
 		{}
 		COGA_DCM(static_index_buffer);
 	};
@@ -53,6 +59,9 @@ namespace coga::gl
 		{}
 		dynamic_index_buffer(s_type* indices, size_t count) :
 			index_buffer<GL_DYNAMIC_DRAW>(indices, count)
+		{}
+		dynamic_index_buffer(coga::input_file & in) :
+			index_buffer<GL_DYNAMIC_DRAW>(in)
 		{}
 		COGA_DCM(dynamic_index_buffer);
 	};

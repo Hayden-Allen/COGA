@@ -45,6 +45,7 @@ namespace coga::gfx
 			m_w = in.uint();
 			m_h = in.uint();
 			m_count = in.ulong();
+			delete m_data;
 			m_data = new uint32_t[m_count];
 
 			// written size
@@ -56,18 +57,13 @@ namespace coga::gfx
 		size_t m_count;
 		uint32_t* m_data;
 	protected:
-		// allocate space unless nullptr is given
 		retained_texture2d(s_type w, s_type h, size_t count, const uint32_t* const data) :
 			texture2d(w, h),
 			m_count(count),
-			m_data(nullptr)
+			m_data(new uint32_t[count])
 		{
-			if (data)
-			{
-				m_data = new uint32_t[count];
-				for (size_t i = 0; i < count; i++)
-					m_data[i] = (data ? data[i] : 0);
-			}
+			for (size_t i = 0; i < count; i++)
+				m_data[i] = (data ? data[i] : 0);
 		}
 	protected:
 		void check_bounds(s_type x, s_type y, s_type w, s_type h) const
