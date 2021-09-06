@@ -22,9 +22,21 @@ namespace coga
 		handle add(T* t)
 		{
 			COGA_CORE_ASSERT(m_next < COUNT, "Bank is full ({}/{})", COUNT, COUNT);
-			handle ret = COGA_CAST(handle, m_next);
-			m_bank[m_next++] = t;
+			handle ret = COGA_CAST(handle, get_next());
+			m_bank[ret] = t;
+			m_next += (ret == m_next);
 			return ret;
+		}
+		void remove(const handle& h)
+		{
+			COGA_CORE_ASSERT(is_valid(h), "Cannot remove an invalid bank handle");
+			// don't want to "remove" the same item multiple times
+			if (m_bank[h])
+			{
+				delete m_bank[h];
+				m_bank[h] = nullptr;
+				m_openings.push_back(COGA_CAST(size_t, h));
+			}
 		}
 		T* const get(HANDLE h)
 		{
@@ -37,7 +49,7 @@ namespace coga
 		const size_t get_size() const
 		{
 			// account for invalid
-			return m_next - 1;
+			return m_next - s_first;
 		}
 		const size_t get_last() const
 		{
@@ -45,12 +57,24 @@ namespace coga
 		}
 	protected:
 		size_t m_next;
+		std::vector<size_t> m_openings;
 		T* m_bank[COUNT];
 	protected:
 		bank() :
 			m_next(s_first),
 			m_bank{ nullptr }
 		{}
+	private:
+		size_t get_next()
+		{
+			size_t n = m_next;
+			if (!m_openings.empty())
+			{
+				n = m_openings.back();
+				m_openings.pop_back();
+			}
+			return n;
+		}
 	};
 
 
