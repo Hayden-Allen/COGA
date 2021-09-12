@@ -5,6 +5,9 @@
 
 namespace coga::gfx
 {
+	/**
+	 * Describes the layout and sizes of the groups of data contained within a vertex array
+	 */
 	class vertex_array_description final : public iterable<std::vector<vertex_buffer_element>>
 	{
 	public:

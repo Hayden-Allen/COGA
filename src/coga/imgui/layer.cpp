@@ -7,8 +7,6 @@
 
 namespace coga::imgui
 {
-    int layer::s_imgui_min_charcode = 1;
-    int layer::s_imgui_max_charcode = 0xffff;
     uint32_t layer::s_instance_count = 0;
 
 
@@ -21,6 +19,7 @@ namespace coga::imgui
 
 
 
+    // propagate COGA events to ImGui
     bool layer::on_app_tick(app_tick_event& e)
     {
         if (m_instance_id == 0)
@@ -149,6 +148,8 @@ namespace coga::imgui
 
     void layer::init()
     {
+        // ImGui initialization
+        // ONLY CALLED WHEN THE FIRST LAYER IS INSTANTIATED
         IMGUI_CHECKVERSION();
         ImGui::CreateContext();
 
@@ -158,6 +159,7 @@ namespace coga::imgui
         io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
         io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
         
+        // custom theme
         {
             ImVec4* colors = ImGui::GetStyle().Colors;
             colors[ImGuiCol_Text] = ImVec4(1.00f, 1.00f, 1.00f, 1.00f);

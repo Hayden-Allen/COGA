@@ -32,6 +32,7 @@ namespace coga::gfx
 	};
 
 
+
 	template<typename T, typename ... ARGS>
 	class framebuffer_color_attachment : public framebuffer_attachment<T, ARGS...> {
 	protected:

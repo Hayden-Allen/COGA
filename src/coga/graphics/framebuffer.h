@@ -19,12 +19,15 @@ namespace coga::gfx
 		virtual ~framebuffer() {}
 	public:
 		virtual void update() = 0;
+		// TODO this forces all framebuffers to be the size of the window, which isn't necessary
 		bool on_window_resize(window_resize_event& e) override
 		{
+			// change size of this
 			m_w = e.get_w();
 			m_h = e.get_h();
 			update();
 
+			// change size of all attachments
 			for (framebuffer_attachment<T, ARGS...>* const a : m_attachments)
 			{
 				a->m_w = e.get_w();

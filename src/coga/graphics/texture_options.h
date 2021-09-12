@@ -42,7 +42,7 @@ namespace coga::gfx
 
 
 
-	// should be revisited and further abstracted when new APIs are introduced
+	// TODO should be revisited and further abstracted when new APIs are introduced
 	struct texture_options
 	{};
 }

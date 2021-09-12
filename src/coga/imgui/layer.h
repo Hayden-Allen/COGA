@@ -38,8 +38,7 @@ namespace coga::imgui
 		virtual void app_tick(app_tick_event& e) const = 0;
 		virtual void app_render(app_render_event& e) const = 0;
 	private:
-		static int s_imgui_min_charcode;
-		static int s_imgui_max_charcode;
+		constexpr static int s_imgui_min_charcode = 0, s_imgui_max_charcode = 0xffff;
 	private:
 		static void init();
 		static void end();

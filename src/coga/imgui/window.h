@@ -18,6 +18,7 @@ namespace coga::imgui
 			ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 0.0f);
 			ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);
 
+			// any pre-rendering setup that needs to happen
 			window_setup();
 
 			if (ImGui::Begin(m_title.c_str(), (m_closeable ? &m_active : nullptr), m_flags))
@@ -98,16 +99,20 @@ namespace coga::imgui
 		{
 			if (ImGui::BeginMenuBar())
 			{
+				// for each menu
 				for (const menu& menu : m_menus)
 				{
-					// menu is open
+					// if the current menu is open
 					if (ImGui::BeginMenu(menu.name.c_str()))
 					{
+						// for each group in the current menu
 						for (const std::vector<menu_entry>& group : menu.entries)
 						{
+							// draw each entry in the current group
 							for (const menu_entry& entry : group)
 								if (ImGui::MenuItem(entry.name.c_str(), entry.shortcut.c_str()))
 									(this->*entry.fn)();
+							// visually separate groups
 							ImGui::Separator();
 						}
 						ImGui::EndMenu();

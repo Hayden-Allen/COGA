@@ -9,9 +9,6 @@ namespace coga
 
 		for (int i = COGA_CAST(int, bytes - 1); i >= 0; i--)
 		{
-			/*const uint64_t off = COGA_CAST(uint64_t, i) * 8;
-			const uint64_t mask = COGA_CAST(uint64_t, 0xff) << off;
-			m_file << COGA_CAST(uint8_t, (data & mask) >> off);*/
 			uint64_t mask = COGA_CAST(uint64_t, 0xff) << (COGA_CAST(uint64_t, i) * 8);
 			m_file << COGA_CAST(uint8_t, (data & mask) >> i * 8);
 		}

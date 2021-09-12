@@ -64,11 +64,15 @@ namespace coga::gfx
 			c.add(this);
 		}
 	protected:
+		// perform whatever operations are necessary when position/rotation are changed
 		virtual void update() = 0;
 	};
 
 
 
+	/**
+	 * Flat 2D camera
+	 */
 	class orthographic_camera : public camera<float>, public dimensional<float>
 	{
 	public:
@@ -112,6 +116,7 @@ namespace coga::gfx
 			return compute_initial_projection(width, height, m_zoom);
 		}
 	private:
+		// needed so this can be called from the constructor
 		glm::mat4 compute_initial_projection(float width, float height, float zoom)
 		{
 			const float z = 1.f / zoom;

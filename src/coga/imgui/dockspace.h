@@ -29,18 +29,24 @@ namespace coga::imgui
 	private:
 		void run(app_draw_event& e) override
 		{
+			// init dockspace
 			ImGuiIO& io = ImGui::GetIO();
 			if (io.ConfigFlags & ImGuiConfigFlags_DockingEnable)
 			{
+				// relies on m_id being unique (I think)
 				ImGuiID dockspace_id = ImGui::GetID(m_id.c_str());
 				ImGui::DockSpace(dockspace_id, ImVec2(0.f, 0.f), ImGuiDockNodeFlags_None);
 			}
+			else
+				COGA_CORE_ASSERT(false, "To use dockspaces, set `io.ConfigFlags & ImGuiConfigFlags_DockingEnable");
 
+			// draw all contained windows
 			for (window* const w : m_windows)
 				w->render(e);
 		}
 		void window_setup() override
 		{
+			// make the dockspace fill the entire viewport
 			ImGuiViewport* viewport = ImGui::GetMainViewport();
 			ImGui::SetNextWindowPos(viewport->Pos);
 			ImGui::SetNextWindowSize(viewport->Size);

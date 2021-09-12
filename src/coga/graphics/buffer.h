@@ -28,6 +28,7 @@ namespace coga::gfx
 		}
 		virtual void load(input_file& in) override
 		{
+			// read data into local buffer, upload to GPU, delete local buffer
 			m_count = in.ulong();
 			T* data = new T[m_count];
 			in.read(data, m_count);
@@ -41,6 +42,7 @@ namespace coga::gfx
 			m_count(count)
 		{}
 	protected:
+		// upload data to the GPU
 		virtual void write(const T* const data, size_t count) const = 0;
 	};
 

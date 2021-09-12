@@ -15,8 +15,6 @@ namespace coga
 		COGA_DCM(input);
 	public:
 		bool is_key_pressed(int key) const { return key_pressed(key); }
-		template<typename ... args>
-		bool are_keys_pressed(const args& ... keys) const { return (is_key_pressed(keys) && ...); }
 		bool are_keys_pressed(const std::vector<key::code>& keys) const
 		{
 			for (key::code key : keys)

@@ -6,8 +6,12 @@
 
 namespace coga::gfx
 {
+	/**
+	 * A buffer that exists both on the GPU and in RAM.
+	 */
 	template<typename T>
-	class retained_buffer :	public serializable
+	class retained_buffer :
+		public T
 	{
 	public:
 		virtual ~retained_buffer()
@@ -15,65 +19,58 @@ namespace coga::gfx
 			delete m_data;
 		}
 	public:
-		virtual void resize(size_t count) = 0;
+		virtual void save(output_file& out) const override
+		{
+			out.ulong(this->m_count);
+			out.write(m_data, this->m_count);
+		}
+		virtual void load(input_file& in) override
+		{
+			this->m_count = in.ulong();
+			m_data = new T::s_type[this->m_count];
+			in.read(m_data, this->m_count);
+		}
+		virtual void resize(size_t count)
+		{
+			auto data = new T::s_type[count];
+			// grow
+			if (count > this->m_count)
+			{
+				// copy existing
+				arrcopy(this->m_count, m_data, data);
+				// set new to 0
+				arrset(count - this->m_count, data, COGA_CAST(T::s_type, 0), this->m_count);
+			}
+			// shrink
+			if (count < this->m_count)
+				arrcopy(count, m_data, data);
+
+			m_data = data;
+			delete[] data;
+			this->m_count = count;
+		}
 	protected:
-		T* m_data;
+		T::s_type* m_data;
 	protected:
-		retained_buffer(T* const data) :
+		retained_buffer(T::s_type* const data, size_t count) :
+			T(count),
 			m_data(data)
 		{}
 	};
 
 
 
-	class retained_index_buffer :
-		public retained_buffer<index_buffer::s_type>,
-		public index_buffer
+	class retained_index_buffer : public retained_buffer<index_buffer>
 	{
-	public:
-		virtual void save(output_file& out) const override
-		{
-			out.ulong(m_count);
-			out.write(m_data, m_count);
-		}
-		virtual void load(input_file& in) override
-		{
-			m_count = in.ulong();
-			m_data = new s_type[m_count];
-			in.read(m_data, m_count);
-		}
-		virtual void resize(size_t count) override
-		{
-			if (count > this->m_count)
-			{
-				s_type* data = new s_type[count];
-				arrcopy(m_count, m_data, data);
-				arrset(count - m_count, data, COGA_CAST(s_type, 0), m_count);
-				delete m_data;
-				m_data = data;
-			}
-			if (count < this->m_count)
-			{
-				s_type* data = new s_type[count];
-				arrcopy(count, m_data, data);
-				delete m_data;
-				m_data = data;
-			}
-
-			m_count = count;
-		}
 	protected:
 		retained_index_buffer(size_t count) :
-			retained_buffer<s_type>(new s_type[count]),
-			index_buffer(count)
+			retained_buffer<index_buffer>(new s_type[count], count)
 		{}
 		retained_index_buffer(s_type* const data, size_t count) :
-			retained_buffer<s_type>(data),
-			index_buffer(count)
+			retained_buffer<index_buffer>(data, count)
 		{}
 		retained_index_buffer(const retained_index_buffer& other, size_t count) :
-			retained_buffer<s_type>(new s_type[count]),
-			index_buffer(count)
+			retained_buffer<index_buffer>(new s_type[count], count)
 		{
 			arrcopy(other.get_count(), other.m_data, m_data);
 			arrset(count - other.get_count(), m_data, COGA_CAST(s_type, 0), other.get_count());
@@ -82,54 +79,17 @@ namespace coga::gfx
 
 
 
-	class retained_vertex_buffer :
-		public retained_buffer<vertex_buffer::s_type>,
-		public vertex_buffer
+	class retained_vertex_buffer : public retained_buffer<vertex_buffer>
 	{
-	public:
-		virtual void save(output_file& out) const override
-		{
-			out.ulong(m_count);
-			out.write(m_data, m_count);
-		}
-		virtual void load(input_file& in) override
-		{
-			m_count = in.ulong();
-			m_data = new s_type[m_count];
-			in.read(m_data, m_count);
-		}
-		virtual void resize(size_t count) override
-		{
-			if (count > this->m_count)
-			{
-				s_type* data = new s_type[count];
-				arrcopy(m_count, m_data, data);
-				arrset(count - m_count, data, COGA_CAST(s_type, 0), m_count);
-				delete m_data;
-				m_data = data;
-			}
-			if (count < this->m_count)
-			{
-				s_type* data = new s_type[count];
-				arrcopy(count, m_data, data);
-				delete m_data;
-				m_data = data;
-			}
-
-			m_count = count;
-		}
 	protected:
 		retained_vertex_buffer(size_t count) :
-			retained_buffer<s_type>(new s_type[count]),
-			vertex_buffer(count)
+			retained_buffer<vertex_buffer>(new s_type[count], count)
 		{}
 		retained_vertex_buffer(s_type* const data, size_t count) :
-			retained_buffer<s_type>(data),
-			vertex_buffer(count)
+			retained_buffer<vertex_buffer>(data, count)
 		{}
 		retained_vertex_buffer(const retained_vertex_buffer& other, size_t count) :
-			retained_buffer<s_type>(new s_type[count]),
-			vertex_buffer(count)
+			retained_buffer<vertex_buffer>(new s_type[count], count)
 		{
 			arrcopy(other.get_count(), other.m_data, m_data);
 			arrset(count - other.get_count(), m_data, COGA_CAST(s_type, 0), other.get_count());

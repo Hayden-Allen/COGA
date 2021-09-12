@@ -94,9 +94,8 @@ namespace coga
 	public:
 		void save(output_file& out) const final override
 		{
-			const size_t last = this->get_last();
-			out.ulong(last);
-			for (size_t i = this->s_first; i < last; i++)
+			out.ulong(this->get_last());
+			for (size_t i = this->s_first; i < this->get_last(); i++)
 				this->m_bank[i]->save(out);
 		}
 		void load(input_file& in) final override
