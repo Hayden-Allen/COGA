@@ -53,7 +53,7 @@ namespace coga::imgui
 		{
 			std::vector<menu> menus = {};
 			bool closeable = false;
-			ImGuiWindowFlags flags = ImGuiWindowFlags_None;
+			ImGuiWindowFlags flags = !menus.empty() ? ImGuiWindowFlags_MenuBar : ImGuiWindowFlags_None;
 		};
 	protected:
 		std::string m_title;
