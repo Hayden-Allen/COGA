@@ -9,7 +9,7 @@ namespace coga::gl
 	class context final : public coga::gfx::context
 	{
 	public:
-		context(void* const host, uint32_t w, uint32_t h, const std::string& title);
+		context(void* const host, uint32_t w, uint32_t h, const std::string& title, bool vsync);
 		COGA_DCM(context);
 		~context()
 		{

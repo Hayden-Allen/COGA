@@ -9,7 +9,7 @@ namespace coga::gfx
 		COGA_DCM(context);
 		virtual ~context() {}
 	public:
-		static context* create(void* const host, uint32_t w, uint32_t h, const std::string& title);
+		static context* create(void* const host, uint32_t w, uint32_t h, const std::string& title, bool vsync);
 		static size_t get_max_texture_units();
 		template<typename T = void*>
 		T const get_window() const

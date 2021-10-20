@@ -8,6 +8,10 @@
 
 namespace coga
 {
+	constexpr char window::get_multi_file_separator_token()
+	{
+		return '|';
+	}
 	/**
 	 * Windows implementation; called by application()
 	 */
@@ -26,7 +30,7 @@ namespace coga
 		window(data)
 	{
 		// initialize graphics context
-		m_context = coga::gfx::context::create(this, m_w, m_h, m_title);
+		m_context = coga::gfx::context::create(this, m_w, m_h, m_title, data.vsync);
 
 		// window settings
 		set_vsync(m_vsync);

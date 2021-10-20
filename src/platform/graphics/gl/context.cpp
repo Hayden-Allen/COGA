@@ -4,9 +4,9 @@
 
 namespace coga::gfx
 {
-	context* context::create(void* const host, uint32_t w, uint32_t h, const std::string& title)
+	context* context::create(void* const host, uint32_t w, uint32_t h, const std::string& title, bool vsync)
 	{
-		return new coga::gl::context(host, w, h, title);
+		return new coga::gl::context(host, w, h, title, vsync);
 	}
 	size_t context::get_max_texture_units()
 	{
@@ -32,7 +32,7 @@ namespace coga::gl
 
 	
 
-	context::context(void* const host, uint32_t w, uint32_t h, const std::string& title)
+	context::context(void* const host, uint32_t w, uint32_t h, const std::string& title, bool vsync)
 	{
 		COGA_CORE_ASSERT(!s_initialized, "Cannot initialize GLFW more than once");
 		s_initialized = true;
@@ -43,7 +43,7 @@ namespace coga::gl
 		m_window = glfwCreateWindow(w, h, title.c_str(), nullptr, nullptr);
 		GLFWwindow* const win = COGA_CAST(GLFWwindow*, m_window);
 		glfwSetWindowUserPointer(win, host);
-
+		glfwSwapInterval(vsync ? 1 : 0);
 		glfwMakeContextCurrent(win);
 		success = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		COGA_CORE_ASSERT(success, "Failed to initialize glad");

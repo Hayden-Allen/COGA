@@ -106,14 +106,16 @@ namespace coga::imgui
 					if (ImGui::BeginMenu(menu.name.c_str()))
 					{
 						// for each group in the current menu
-						for (const std::vector<menu_entry>& group : menu.entries)
+						for (size_t i = 0; i < menu.entries.size(); i++)
 						{
+							const std::vector<menu_entry>& group = menu.entries[i];
 							// draw each entry in the current group
 							for (const menu_entry& entry : group)
 								if (ImGui::MenuItem(entry.name.c_str(), entry.shortcut.c_str()))
 									(this->*entry.fn)();
 							// visually separate groups
-							ImGui::Separator();
+							if(i != menu.entries.size() - 1)
+								ImGui::Separator();
 						}
 						ImGui::EndMenu();
 					}

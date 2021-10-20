@@ -1,6 +1,7 @@
 #pragma once
 #include "pch.h"
 #include "input_key.h"
+#include "input_mouse.h"
 #include "coga/log.h"
 #include <glm/glm.hpp>
 
@@ -22,6 +23,8 @@ namespace coga
 					return false;
 			return true;
 		}
+		bool is_mouse_left() const { return is_mouse_pressed(mouse::left); }
+		bool is_mouse_right() const { return is_mouse_pressed(mouse::right); }
 		bool is_mouse_pressed(int button) const { return mouse_pressed(button); }
 		float get_mouse_x() const { return mouse_x(); }
 		float get_mouse_y() const { return mouse_y(); }
