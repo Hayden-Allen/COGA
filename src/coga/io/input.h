@@ -1,9 +1,9 @@
 #pragma once
 #include "pch.h"
+#include "../vendor/glm/glm/glm.hpp"
 #include "input_key.h"
 #include "input_mouse.h"
 #include "coga/log.h"
-#include <glm/glm.hpp>
 
 namespace coga
 {

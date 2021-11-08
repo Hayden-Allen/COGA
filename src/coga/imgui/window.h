@@ -1,6 +1,6 @@
 #pragma once
 #include "pch.h"
-#include <imgui.h>
+#include "../vendor/imgui/imgui.h"
 #include "coga/event/app_event.h"
 #include "coga/io/input.h"
 #include "coga/io/input_key.h"

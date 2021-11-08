@@ -1,8 +1,8 @@
 #pragma once
-#include "log.h"
+#include "../vendor/glm/glm/glm.hpp"
+#include "../log.h"
 #include "render_object.h"
 #include "shader.h"
-#include <glm/glm.hpp>
 
 namespace coga::gfx
 {

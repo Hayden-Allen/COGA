@@ -1,7 +1,7 @@
 #pragma once
 #include "pch.h"
+#include "../vendor/glm/glm/glm.hpp"
 #include "typed.h"
-#include <glm/glm.hpp>
 
 namespace coga
 {

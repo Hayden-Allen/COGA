@@ -1,7 +1,7 @@
 #pragma once
 #include "pch.h"
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
+#include "../vendor/glm/glm/glm.hpp"
+#include "../vendor/glm/glm/gtc/matrix_transform.hpp"
 #include "coga/event/event_handler_container.h"
 #include "coga/layer/layer.h"
 #include "coga/util/typed.h"
